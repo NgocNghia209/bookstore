@@ -1,0 +1,14 @@
+<h1>THÊM MỚI Ảnh của sách</h1>
+<form action="/inserted_img" enctype="multipart/form-data" method="POST">
+    Chọn tác giả:
+    <select name='id_sach'>
+            <option>Chọn sách ....</option>
+            {% for i in ds %}
+            <option value="{{i[0]}}">{{i[1]}}</option>
+            {% endfor %}
+        </select>
+    <br/> Chọn ảnh:
+    <input class="form-control" type="file" name="link_img" multiple="">
+    <input class="btn btn-primary" type="submit" name="insert" value="Thêm mới sách">
+    <a href="/admin" class="btn btn-danger">Hủy</a>
+</form>

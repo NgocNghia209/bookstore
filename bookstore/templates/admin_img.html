@@ -1,0 +1,35 @@
+<table class="table">
+    <tr>
+        <th>Mã ảnh</th>
+        <th>Ảnh</th>
+        <th>Tên sách</th>
+    </tr>
+    {% for i in ds_img %}
+    <tr>
+        {% if i[0] == id_img %}
+        <form action="/updated_img?id_img={{i[0]}}" enctype="multipart/form-data" method="POST">
+            <td>{{i[0]}}</td>
+            <td><input class="form-control" type="file" value="{{i[1]}}" name="link_img" multiple=""></td>
+            <td><select name='id_sach'>
+                    <option>Chọn sách ... </option>
+                    {% for a in ds_products %}
+                    <option value="{{a[0]}}">{{a[1]}}</option>
+                    {% endfor %}
+                </select></td>
+            <td>
+                <a href="/admin" class="btn btn-danger">Hủy</a>
+                <input type="submit" class="btn btn-primary" value="Cập nhật">
+            </td>
+        </form>
+        {% else %}
+        <td>{{i[0]}}</td>
+        <td><img src="{{i[1]}}" alt="" style="max-width:100px" /></td>
+        <td>{{i[2]}}</td>
+        <td>
+            <a href="/delete_img?id_img={{i[0]}}" class="btn btn-danger">Xóa</a>
+            <a href="?id_img={{i[0]}}" class="btn btn-primary">Sửa</a>
+        </td>
+        {% endif %}
+    </tr>
+    {% endfor %}
+</table>

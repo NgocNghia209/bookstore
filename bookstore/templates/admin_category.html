@@ -1,0 +1,29 @@
+<table class="table">
+    <tr>
+        <th>Mã danh mục</th>
+        <th>Tên danh mục</th>
+        <th>trạng thái</th>
+    </tr>
+    {% for i in ds_products_categories %}
+    <tr>
+        {% if i[0] == id_dm %}
+        <form action="/updated_category?id_dm={{i[0]}}" enctype="multipart/form-data" method="POST">
+            <td>{{i[0]}}</td>
+            <td><input type="text" value="{{i[1]}}" name="ten_dm"></td>
+            <td><input type="text" value="{{i[3]}}" name="trang_thai"></td>
+            <td>
+                <a href="/admin" class="btn btn-danger">Hủy</a>
+                <input type="submit" class="btn btn-primary" value="Cập nhật">
+            </td>
+        </form>
+        {% else %} {% for x in i %}
+        <td>{{x}}</td>
+        {% endfor %}
+        <td>
+            <a href="/delete_category?id_dm={{i[0]}}" class="btn btn-danger">Xóa</a>
+            <a href="?id_dm={{i[0]}}" class="btn btn-primary">Sửa</a>
+        </td>
+        {% endif %}
+    </tr>
+    {% endfor %}
+</table>

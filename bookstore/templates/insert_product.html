@@ -1,0 +1,22 @@
+<form action="/inserted_product" enctype="multipart/form-data" method="POST">
+    Nhập vào tên sách:
+    <input class="form-control" type="text" name="ten_sach"> Chọn tác giả:
+    <select name='id_tacgia'>
+            {% for i in ds_products_author %}
+            <option value="{{i[0]}}">{{i[1]}}</option>
+            {% endfor %}
+        </select>
+    <br/> Nhập giá sách:
+    <input class="form-control" type="text" name="gia_sach" multiple=""> Nhập số lượng:
+    <input class="form-control" type="text" name="soluong" multiple=""> Nhập số sao:
+    <input class="form-control" type="text" name="so_sao" multiple=""> Nhập Mô tả:
+    <input class="form-control" type="text" name="mota" multiple=""> Nhập TRạng thái:
+    <input class="form-control" type="text" name="trang_thai" multiple=""> Nhập vào id danh muc:
+    <select name='id_dm'>
+            {% for i in ds_products_categories %}
+            <option value="{{i[0]}}">{{i[1]}}</option>
+            {% endfor %}
+        </select>
+    <input class="btn btn-primary" type="submit" name="insert" value="Thêm mới sách">
+    <a href="/admin" class="btn btn-danger">Hủy</a>
+</form>
